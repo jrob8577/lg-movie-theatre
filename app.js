@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 var handlebars = require('express-handlebars');
 var session = require('express-session');
 
-var Grant = require('grant-express');
-var grant = new Grant(require('./config.json'))
+// var Grant = require('grant-express');
+// var grant = new Grant(require('./config.json'))
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -30,8 +30,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({secret:'grant'}))
-app.use(grant)  
+// app.use(session({secret:'grant'}))
+// app.use(grant)
 
 app.use('/', routes);
 app.use('/users', users);
