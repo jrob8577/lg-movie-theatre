@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fetch = require('node-fetch');
+var session = require('express-session')
 
 var githubUrl = 'https://github.com/login/oauth/authorize?client_id=' + process.env.GITHUB_CLIENT_ID
 var githubTokenRequest = 'https://github.com/login/oauth/access_token'
@@ -28,13 +29,22 @@ var convertResponseToObject = function( body ) {
   return body.split( '&' ).reduce( queryStringReducer, {} )
 }
 
+var completeLogin = function( githubResponse, session, response ) {
+  var redirect_to = session.redirect_after_auth
+  session.github_access_token = githubResponse.access_token
+
+  if( redirect_to ) {
+    session.redirect_after_auth = undefined
+    response.redirect( redirect_to )
+  } else {
+    response.render( 'home' )
+  }
+}
+
 /* GET auth page. */
 router.get('/login', function(req, res, next) {
+  req.session.redirect_after_auth = req.get( 'referrer' )
   res.redirect( githubUrl );
-});
-
-router.get('/logout', function(req, res, next) {
-  res.send('this is a test of the logout endpoint');
 });
 
 router.get('/callback', function(req, res, next) {
@@ -43,14 +53,12 @@ router.get('/callback', function(req, res, next) {
       return response.text()
     })
     .then( function( body ) {
-      res.set('Content-Type', 'application/json')
-      res.send( convertResponseToObject( body ) )
+      completeLogin( convertResponseToObject( body ), req.session, res )
     })
     .catch( function( error) {
       // TODO: Do something with this error
       res.send( error )
     })
 });
-
 
 module.exports = router;
