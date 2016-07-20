@@ -1,0 +1,11 @@
+{
+  "server": {
+    "protocol": "https",
+    "host": "localhost:3000"
+  },
+  "github": {
+    "key": "a391c044bd23da0e1193",
+    "secret": "ffa098f2f3537b8b83fe3e36b1caa983d76d012d",
+    "callback": "/auth/callback"
+  }
+}

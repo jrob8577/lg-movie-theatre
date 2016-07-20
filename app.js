@@ -5,9 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var handlebars = require('express-handlebars');
+var session = require('express-session');
+
+var Grant = require('grant-express');
+var grant = new Grant(require('./config.json'))
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var auth = require('./routes/auth')
 
 var app = express();
 
@@ -25,8 +30,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({secret:'grant'}))
+app.use(grant)  
+
 app.use('/', routes);
 app.use('/users', users);
+app.use('/auth', auth);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
