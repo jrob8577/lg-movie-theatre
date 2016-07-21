@@ -14,6 +14,7 @@
     "express-session": "^1.14.0",
     "grant-express": "^3.6.2",
     "morgan": "~1.7.0",
+    "node-fetch": "^1.5.3",
     "serve-favicon": "~2.3.0"
   }
 }

@@ -7,12 +7,13 @@ var bodyParser = require('body-parser');
 var handlebars = require('express-handlebars');
 var session = require('express-session');
 
-var Grant = require('grant-express');
-var grant = new Grant(require('./config.json'))
+// var Grant = require('grant-express');
+// var grant = new Grant(require('./config.json'))
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth')
+var profile = require('./routes/profile')
 
 var app = express();
 
@@ -28,14 +29,20 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({secret:'grant'}))
-app.use(grant)  
+// Set up session handling
+app.set( 'trust proxy', 1 )
+app.use( session({
+  secret: process.env.SESSION_SECRET,
+  cookie: {}
+}))
 
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
+app.use('/profile', profile);
 
 
 // catch 404 and forward to error handler
