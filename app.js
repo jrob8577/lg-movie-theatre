@@ -12,6 +12,8 @@ var users = require('./routes/users');
 var auth = require('./routes/auth')
 var profile = require('./routes/profile')
 var theaters = require( './routes/theaters' )
+var movie = require( './routes/movie' )
+var movie_by_theater = require( './routes/movies' )
 
 var app = express();
 
@@ -42,6 +44,8 @@ app.use('/users', users);
 app.use('/auth', auth);
 app.use('/profile', profile);
 app.use('/theaters', theaters );
+app.use('/movie', movie );
+app.use('/movies', movie_by_theater );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
