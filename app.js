@@ -7,13 +7,11 @@ var bodyParser = require('body-parser');
 var handlebars = require('express-handlebars');
 var session = require('express-session');
 
-// var Grant = require('grant-express');
-// var grant = new Grant(require('./config.json'))
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth')
 var profile = require('./routes/profile')
+var theaters = require( './routes/theaters' )
 
 var app = express();
 
@@ -43,7 +41,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/profile', profile);
-
+app.use('/theaters', theaters );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
