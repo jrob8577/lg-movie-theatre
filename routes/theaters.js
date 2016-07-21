@@ -19,7 +19,7 @@ router.get('/:zipCode', function(req, res, next) {
 router.get('/id/:id', function( request, response, next ) {
   var api = new Showtimes()
 
-  var theater = api.getTheater( request.params.id, function( error, theater ) {
+  api.getTheater( request.params.id, function( error, theater ) {
     if( error ) {
       response.send( error )
     } else {
