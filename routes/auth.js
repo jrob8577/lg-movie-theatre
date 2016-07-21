@@ -1,15 +1,21 @@
 var express = require('express');
 var router = express.Router();
 var fetch = require('node-fetch');
-var session = require('express-session')
 
-var githubUrl = 'https://github.com/login/oauth/authorize?client_id=' + process.env.GITHUB_CLIENT_ID
+var githubUrl = 'https://github.com/login/oauth/authorize?'
 var githubTokenRequest = 'https://github.com/login/oauth/access_token'
+
+var githubAuthorizeUrl = function() {
+  return githubUrl + 'client_id=' +
+    process.env.GITHUB_CLIENT_ID + '&scope=user user:email'
+}
 
 var githubParameters = function( code ) {
   return {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
       client_id: process.env.GITHUB_CLIENT_ID,
       client_secret: process.env.GITHUB_CLIENT_SECRET,
@@ -44,7 +50,11 @@ var completeLogin = function( githubResponse, session, response ) {
 /* GET auth page. */
 router.get('/login', function(req, res, next) {
   req.session.redirect_after_auth = req.get( 'referrer' )
-  res.redirect( githubUrl );
+  res.redirect( githubAuthorizeUrl() );
+});
+
+router.get('/logout', function( req, res, next) {
+  req.session.destroy()
 });
 
 router.get('/callback', function(req, res, next) {
