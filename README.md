@@ -16,18 +16,22 @@ Feel free to use frameworks and other libraries, but do not copy-paste, it is cr
 As you code your site, you will likely encounter scenarios that you may not have expected, which is fine, it only means that you given more opportunities to problem-solve!
 
 ## Specifications
-- [ ] User authentication (for identification and profile)
-- [ ] When the site loads up, I want a map to appear and a way where I just enter my zip code and then the map automatically transports me to the theaters closest to me.
-- [ ] When I click on a theater location, I just want a theater photo, information, customer rating (for the theater), price rating ($ - $$$$), and a button to click through to current showtimes.
-- [ ] Showtime listing includes theater type (imax, etc.)
+- [X] User authentication (for identification and profile)
+- [X] When the site loads up, I want a map to appear and a way where I just enter my zip code and then the map automatically transports me to the theaters closest to me.
+- [X] When I click on a theater location, I just want a theater photo, information, customer rating (for the theater), price rating ($ - $$$$), and a button to click through to current showtimes. ** Photos not available in API
+- [ ] Showtime listing includes theater type (imax, etc.) ** Not available in API
 - [ ] I want a  service that saves preferred theater, and preferred film genre.
-- [ ] If you use any frameworks or code libraries, please cite them and/or explain how you implemented them in a gitbook, or on your README.
-- [ ] Optimize for Mobile.
-- [ ] Link to trailers for each film.
+- [X] If you use any frameworks or code libraries, please cite them and/or explain how you implemented them in a gitbook, or on your README.
+  - Jquery
+  - Google Maps
+  - Handlebars
+  - Express js
+- [X] Optimize for Mobile.
+- [X] Link to trailers for each film.
 - [ ] Node, Express, React, Data Storage (?)
 
 ## Stretch Goals
-- [ ] Link to Fandango page to purchase ticket.
+- [X] Link to Fandango page to purchase ticket. (Movietickets.com via google showtimes api)
 - [ ] As a user, I want to be able to additionally filter theaters by movie title from the landing page.
 - [ ] Credit card info stored. We've moved to stretch goal as we don't see an API that allows us to purchase, but can include if we find one.
 
