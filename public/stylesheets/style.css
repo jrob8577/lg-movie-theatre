@@ -1,11 +1,7 @@
 body {
 }
 
-.map-wrapper {
-  height: 100%;
-  min-height: 100%;
-}
-
-.map {
-  padding: 100%;
+.navbar {
+  margin-bottom: 0;
+  z-index: 1000;
 }
