@@ -16,6 +16,25 @@ router.get('/:zipCode', function(req, res, next) {
   });
 });
 
+function normalizedShowtimes( movie ) {
+  const tickets = movie.showtime_tickets
+
+  return Object.assign( movie, {
+    showtimes: movie.showtimes.map( function( showtime ) {
+      return {
+        time: showtime,
+        ticketUrl: tickets[ showtime ]
+      }
+    })
+  })
+}
+
+function normalizedMovies( theater ) {
+  return {
+    movies: theater.movies.map( normalizedShowtimes )
+  }
+}
+
 router.get('/id/:id', function( request, response, next ) {
   var api = new Showtimes()
 
@@ -23,7 +42,10 @@ router.get('/id/:id', function( request, response, next ) {
     if( error ) {
       response.send( error )
     } else {
-      response.render( 'theater', theater )
+      response.render(
+        'theater',
+        Object.assign( theater, normalizedMovies( theater ) )
+      )
     }
   })
 });
