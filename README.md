@@ -16,8 +16,8 @@ Feel free to use frameworks and other libraries, but do not copy-paste, it is cr
 As you code your site, you will likely encounter scenarios that you may not have expected, which is fine, it only means that you given more opportunities to problem-solve!
 
 ## Specifications
-- [ ] User authentication (for identification and profile)
-- [ ] When the site loads up, I want a map to appear and a way where I just enter my zip code and then the map automatically transports me to the theaters closest to me.
+- [x] User authentication (for identification and profile)
+- [x] When the site loads up, I want a map to appear and a way where I just enter my zip code and then the map automatically transports me to the theaters closest to me.
 - [ ] When I click on a theater location, I just want a theater photo, information, customer rating (for the theater), price rating ($ - $$$$), and a button to click through to current showtimes.
 - [ ] Showtime listing includes theater type (imax, etc.)
 - [ ] I want a  service that saves preferred theater, and preferred film genre.
