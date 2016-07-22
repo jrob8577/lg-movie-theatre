@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="col-md-4">
+    <dl>
+      <dt>id</dt>
+      <dd>c57f301d64662449</dd>
+
+      <dt>name</dt>
+      <dd>AMC Bay Street 16</dd>
+
+      <dt>address</dt>
+      <dd>5614 Bay Street, Emeryville, CA</dd>
+
+      <dt>phoneNumber</dt>
+      <dd>(888) 262-4386</dd>
+    </dl>
+  </div>
+
+  <div class="col-md-8">
+    {{#each movies}}
+    <div class="movie-listing">
+      <h4>{{name}}</h4>
+      <div class="details">
+        <span class="runtime">{{runtime}}</span>
+        <span class="genres">
+        {{#each genre}}{{this}} {{/each}}
+        </span>
+
+        <div class="links">
+          <a href="{{imdb}}">IMDB</a>
+          <a href="{{trailer}}">Trailer</a>
+        </div>
+      </div>
+
+      <div class="showtimes">
+        {{#each showtimes}}
+        <span class="showtime">
+          <a href="#">{{this}}</a>
+        </span>
+        {{/each}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

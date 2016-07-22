@@ -23,7 +23,7 @@ router.get('/id/:id', function( request, response, next ) {
     if( error ) {
       response.send( error )
     } else {
-      response.send( theater )
+      response.render( 'theater', theater )
     }
   })
 });
