@@ -16,6 +16,7 @@
     "grant-express": "^3.6.2",
     "morgan": "~1.7.0",
     "node-fetch": "^1.5.3",
+    "node-geocoder": "^3.13.0",
     "serve-favicon": "~2.3.0",
     "showtimes": "^2.1.2"
   },
